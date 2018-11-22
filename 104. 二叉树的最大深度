@@ -1,0 +1,31 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+/*思路：分别计算左右子树的深度，在进行比较返回*/
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        
+        if(root==nullptr)
+          return 0;
+        
+        int LeftDepth = 0;
+        int RightDepth = 0;
+        
+      
+        LeftDepth =maxDepth(root->left)+1;
+        RightDepth =maxDepth(root->right)+1;
+        
+        return LeftDepth>RightDepth?LeftDepth:RightDepth;
+        
+        
+        
+        
+    }
+};
