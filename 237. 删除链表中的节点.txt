@@ -1,0 +1,21 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+/*思路：这道题很经典，删除链表的非尾节点，不需要保存当前指针，
+只需要将要删除节点的下个节点赋值给当前要删除的节点没在把当前节点的下一个节点删除即可。*/
+class Solution {
+public:
+    void deleteNode(ListNode* node) {
+        ListNode* pCur=node;
+        ListNode* pNext=pCur->next; 
+        pCur->val=pNext->val;
+        pCur->next=pNext->next;
+        delete pNext;          
+        
+    }
+};
