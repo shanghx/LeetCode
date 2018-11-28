@@ -8,8 +8,27 @@
  */
 class Solution {
 public:
+    
+    ListNode* resv(ListNode* cur,ListNode* next)
+    {
+
+        if(next!= nullptr)
+        {
+
+            ListNode* head = resv(next,next->next);
+            
+            next->next= cur;
+            cur->next =nullptr;
+            return head;
+        }
+        else
+        {
+
+            return  cur;
+        }
+    }
     ListNode* reverseList(ListNode* head) {
-        /*三指针法 * */
+        /*三指针法 
         
         if(head==nullptr)
             return head;
@@ -27,7 +46,25 @@ public:
         }
         Cur->next=Pre;
            
-       return Cur;
+       return Cur;*/
+        
+        
+        /*递归法*/
+        
+        if(head==nullptr)
+            return nullptr;
+        
+        
+   
+	if ( head->next == NULL)
+	{
+		return head;
+	}
+	ListNode *tmp = resv(head, head->next);
+	return tmp;
+      
+    
+        
         
         
     }
