@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        
+       /* int tmp=0,count=0;
+        if(n<=0)
+            return false;
+        while(n)
+        {
+            if(n==1)
+                return true;
+            if(n%2!=0)
+                return false;
+            else
+            {
+                n/=2;
+            }
+        }
+        return true;
+        
+    }*/
+    if(n<=0) return false; if((n&n-1)==0) return true; return false;//一行代码解决，2的幂说明该数的二进制位中只有一个1   此时n和n-1按位&就是0
+    }
+};
