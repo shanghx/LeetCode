@@ -1,0 +1,56 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseBetween(ListNode* head, int m, int n) {
+        if (head == nullptr)
+			return head;
+        //用栈来保存要逆置的节点
+		std::stack<ListNode*>s;
+        
+		ListNode* pre = head;
+		ListNode* cur = head;
+        
+		int i = n - m  + 1;//压入栈的节点数
+		int j = m;//要提前走的步数
+        
+		while (--j)
+		{
+			pre = cur;
+			cur = cur->next;
+		}
+        ListNode* tmp=nullptr;//保存最后要逆置的节点
+		while (i--)
+		{
+			s.push(cur);
+            
+                tmp=cur;
+                cur = cur->next;
+		}
+		//从栈中去取元素，然后连接
+		ListNode* node = nullptr;
+       
+		while (!s.empty())
+		{
+			node = s.top();
+			pre->next = node;
+			pre = node;
+			s.pop();
+        }
+        //连接后面的节点
+        pre->next=cur;
+        //判断头节点是有没有改变
+		if(m==1)
+            head=tmp;
+		
+	return head;
+	
+        
+    }
+};
