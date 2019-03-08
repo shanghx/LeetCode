@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int a, b, c;
+	int x, y, z, w;
+	int flag = 1;
+	while (cin >> x >> y >> z >> w)
+	{
+		if ((x + z) % 2 != 0)
+			flag = 0;
+		if ((y + w) % 2 != 0)
+			flag = 0;
+
+		a = (x + z) / 2;
+		b = (y + w) / 2;
+		c = w - b;
+		if (a < 0 || b < 0 || c < 0 || flag == 0)
+			cout << "No";
+		else
+			cout << a << " " << b << " " << c;
+	}
+	system("pause");
+	return 0;
+}
