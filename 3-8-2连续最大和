@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int n, arr[100000];
+	while (cin >> n)
+	{
+		int sum = 0, max = -10000;//如果数组中的数全部是负数，所以max不能初始化为0
+		for (int i = 0; i < n; i++)
+			cin >> arr[i];
+        
+		for (int i = 0; i < n; i++)
+		{
+			sum += arr[i];//sum每次计算当前的和，并且与max比较
+			if (sum > max)
+				max = sum;
+			if (sum < 0 )//如果sum计算完后是负数，那么再加一个数必定使下一个数更小，所以让其更新为0重新计算
+				sum = 0;
+		}
+		cout << max << endl;
+	}
+	system("pause");
+	return 0;
+}
